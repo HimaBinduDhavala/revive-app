@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revive | Digital Wellness</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <!--<img src="assets/revive-logo.svg" alt="Revive logo" class="revive-logo">-->
+    <h1>Revive</h1>
+    <p>Recharge. Reflect. Rise.</p>
+    <div class="motivation-words">
+        <span>Reset</span>
+        <span>Rebuild</span>
+        <span>Reclaim</span>
+    </div>
+</header>
+
+<!-- =====================================
+     AUTHENTICATION SECTION
+===================================== -->
+
+<section class="auth-main-container">
+    <div class="auth-shell" id="authShell">
+        <div class="auth-brand-panel">
+            <div class="brand-badge">Revive Wellness</div>
+            <h1>Balance your screen time and grow with confidence.</h1>
+            <p>Sign in to access awareness tools, wellness habits, and support resources designed for students.</p>
+            <ul>
+                <li>Track your digital habits</li>
+                <li>Use wellness reminders</li>
+                <li>Stay focused with guided tools</li>
+            </ul>
+        </div>
+
+        <div class="auth-form-panel">
+            <div class="auth-slider" id="authSlider">
+                <div class="auth-panel">
+                    <h2>Welcome Back</h2>
+                    <p>Login with your email or phone number and password.</p>
+
+                    <form id="loginForm" onsubmit="handleLoginSubmit(event)">
+                        <label for="loginIdentifier">Email or Phone</label>
+                        <input type="text" id="loginIdentifier" placeholder="Enter email or phone" required>
+
+                        <label for="loginPassword">Password</label>
+                        <div class="password-box">
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            <span class="eye-icon" onclick="togglePassword('loginPassword', this)">👁️</span>
+                        </div>
+
+                        <button type="submit" id="loginButton">Login</button>
+                   
+
+                    <p class="switch-text">
+                        Don’t have an account?
+                        <button type="button" class="text-link" onclick="showSignupView()">Create one</button>
+                    </p>
+                </div>
+
+                <div class="auth-panel">
+                    <h2>Create Account</h2>
+                    <p>Join the platform and build healthier digital habits.</p>
+
+                    <form id="signupForm" onsubmit="handleSignupSubmit(event)">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" placeholder="Enter your full name">
+
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" placeholder="Enter your email">
+
+                        <label for="signupPhone">Phone Number (Optional)</label>
+                        <input type="tel" id="signupPhone" placeholder="Enter your phone number">
+
+                        <label for="signupPassword">Password</label>
+                        <div class="password-box">
+                            <input type="password" id="signupPassword" placeholder="Create a password">
+                            <span class="eye-icon" onclick="togglePassword('signupPassword', this)">👁️</span>
+                        </div>
+
+                        <label for="signupConfirmPassword">Confirm Password</label>
+                        <div class="password-box">
+                            <input type="password" id="signupConfirmPassword" placeholder="Confirm password">
+                            <span class="eye-icon" onclick="togglePassword('signupConfirmPassword', this)">👁️</span>
+                        </div>
+
+                        <button type="submit">Create Account</button>
+                    </form>
+
+                    <p class="switch-text">
+                        <button type="button" class="text-link" onclick="showLoginView()">Already have an account? Login</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="mainPlatform" style="display:none;">
+
+    <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" aria-label="Open menu">
+        ☰
+    </button>
+
+    <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="closeMenu()"></div>
+
+    <nav class="menu-bar" id="sidebarMenu">
+        <div class="menu-header">
+            <span>Navigation</span>
+            <button class="menu-close" onclick="closeMenu()" aria-label="Close menu">✕</button>
+        </div>
+
+        <button onclick="goToSection('about')">About</button>
+        <button onclick="goToSection('symptoms')">Symptoms</button>
+        <button onclick="goToSection('screen_timer')">Screen Timer</button>
+        <button onclick="goToSection('quotes')">Quotes</button>
+        <button onclick="goToSection('wellness')">Wellness</button>
+        <button onclick="goToSection('recommendations')">Recommendations</button>
+        <button onclick="goToSection('pomodoro')">Pomodoro</button>
+        <button onclick="goToSection('tracker')">Tracker</button>
+        <button onclick="goToSection('help')">Emergency Help</button>
+        <button onclick="goToSection('faq')">FAQ</button>
+        <button onclick="goToSection('feedback')">Feedback</button>
+    </nav>
+
+    
+    <!-- TOP CONTROLS -->
+
+<div class="top-controls">
+
+    <!-- DARK/LIGHT MODE -->
+
+    <button
+onclick="toggleTheme()"
+id="themeBtn"
+class="theme-btn">
+
+🌙
+
+</button>
+
+    <!-- LOGOUT -->
+
+    <button
+onclick="logout()"
+class="logout-btn">
+
+🚪 Logout
+
+</button>
+
+</div>
+
+<nav class="top-tabs">
+    <button type="button" onclick="openTopTab('screen_timer')">Screen Timer</button>
+    <button type="button" onclick="openTopTab('recommendations')">Recommendations</button>
+    <button type="button" onclick="openTopTab('pomodoro')">Pomodoro</button>
+    <button type="button" onclick="openTopTab('tracker')">Tracker</button>
+    <button type="button" onclick="openTopTab('progress')">Progress</button>
+</nav>
+<!-- DIGITAL ADDICTION AWARENESS -->
+
+<section class="awareness-section" id="about">
+
+    <h2>📱 About Digital Addiction</h2>
+
+    <div class="awareness-card">
+
+        <h3>What is Digital Addiction?</h3>
+
+        <p>
+            Digital addiction is the excessive and uncontrolled use of
+            digital devices such as smartphones, social media, games,
+            and streaming platforms that negatively affects physical,
+            mental, academic, and social well-being.
+        </p>
+
+        <h3>Types of Digital Addiction</h3>
+
+        <ul>
+            <li>📲 Social Media Addiction</li>
+            <li>🎮 Gaming Addiction</li>
+            <li>📺 Video Streaming Addiction</li>
+            <li>📱 Mobile Dependency</li>
+        </ul>
+
+        <h3>Main Causes</h3>
+
+        <ul>
+            <li>Instant gratification</li>
+            <li>Peer pressure</li>
+            <li>Stress relief dependency</li>
+            <li>Lack of time management</li>
+            <li>Fear of missing out (FOMO)</li>
+        </ul>
+
+        <h3>Student Statistics</h3>
+
+        <p>
+            Studies show that over 70% of students spend
+            more than 5–7 hours daily on screens,
+            impacting productivity and mental health.
+        </p>
+
+        <h3>Real-Life Examples</h3>
+
+        <p>
+            Students missing deadlines, reduced sleep,
+            low concentration, social isolation,
+            and reduced academic performance due to
+            prolonged device usage.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SYMPTOMS SECTION -->
+
+<section class="symptoms-section" id="symptoms">
+
+    <h2>⚠ Symptoms & Warning Signs</h2>
+
+    <div class="symptoms-card">
+
+        <h3>Checklist</h3>
+
+        <div class="checklist">
+
+            <label><input type="checkbox"> Excessive screen time</label>
+            <label><input type="checkbox"> Anxiety when away from phone</label>
+            <label><input type="checkbox"> Poor concentration</label>
+            <label><input type="checkbox"> Sleep disturbance</label>
+            <label><input type="checkbox"> Reduced academic performance</label>
+            <label><input type="checkbox"> Social withdrawal</label>
+
+        </div>
+
+        <h3>Self-Assessment Quiz</h3>
+
+        <p>
+            If you checked 3 or more signs,
+            you may be experiencing digital dependency
+            and should practice digital wellness habits.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- DASHBOARD -->
+<section class="dashboard">
+
+    <div class="card timer-card" id="screen timer">
+
+    <h2>Advanced Screen Usage Timer</h2>
+
+    <div class="timer-circle">
+    <h1 id="timer">00:00:00</h1>
+</div>
+
+<div id="activityStatus" class="active-status">
+    🟢 Healthy Usage
+</div>
+
+    <!--<div class="usage-limit">
+
+        <h3>Daily Usage Limit</h3>
+
+        <input type="number" id="limitInput" placeholder="Enter limit in minutes">
+
+        <button onclick="setLimit()">Set Limit</button>
+
+        <p id="limitText">No limit set</p>
+
+    </div>-->
+
+</div>
+
+</section>
+
+    <div class="card" id="quotes">
+        <h2>Motivational Quote</h2>
+        <p id="quote">“Discipline is choosing between what you want now and what you want most.”</p>
+        <button onclick="changeQuote()">New Quote</button>
+    </div>
+
+</section>
+
+<!-- WELLNESS HABITS -->
+<section class="wellness-section" id="wellness">
+
+    <h2>Wellness Habits & Suggestions</h2>
+
+    <div class="habit-container">
+
+    <button class="habit-btn" onclick="openHabit('sleep')">Sleep Well</button>
+    <button class="habit-btn" onclick="openHabit('exercise')">Exercise Daily</button>
+    <button class="habit-btn" onclick="openHabit('meditation')">Meditation</button>
+    <button class="habit-btn" onclick="openHabit('reading')">Reading Books</button>
+    <button class="habit-btn" onclick="openHabit('hydration')">Stay Hydrated</button>
+    <button class="habit-btn" onclick="openHabit('studybreak')">Study Breaks</button>
+    <button class="habit-btn" onclick="openHabit('journaling')">Journaling</button>
+    <button class="habit-btn" onclick="openHabit('family')">Family Time</button>
+    <button class="habit-btn" onclick="openHabit('nature')">Nature Walk</button>
+    <button class="habit-btn" onclick="openHabit('music')">Relaxing Music</button>
+    <button class="habit-btn" onclick="openHabit('gratitude')">Gratitude Practice</button>
+    <button class="habit-btn" onclick="openHabit('healthyfood')">Healthy Eating</button>
+    <button class="habit-btn" onclick="openHabit('time')">Time Management</button>
+    <button class="habit-btn" onclick="openHabit('goal')">Goal Setting</button>
+    <button class="habit-btn" onclick="openHabit('positivity')">Positive Thinking</button>
+    <button class="habit-btn" onclick="openHabit('digitaldetox')">Digital Detox</button>
+    <button class="habit-btn" onclick="openHabit('breathing')">Deep Breathing</button>
+    <button class="habit-btn" onclick="openHabit('selfcare')">Self Care</button>
+    <button class="habit-btn" onclick="openHabit('focus')">Focus Practice</button>
+    <button class="habit-btn" onclick="openHabit('yoga')">Yoga</button>
+    <button class="habit-btn" onclick="openHabit('kindness')">Kindness</button>
+    <button class="habit-btn" onclick="openHabit('social')">Healthy Social Life</button>
+    <button class="habit-btn" onclick="openHabit('budget')">Money Management</button>
+    <button class="habit-btn" onclick="openHabit('creativity')">Creativity</button>
+    <button class="habit-btn" onclick="openHabit('learning')">Continuous Learning</button>
+    <button class="habit-btn" onclick="openHabit('confidence')">Self Confidence</button>
+    <button class="habit-btn" onclick="openHabit('routine')">Daily Routine</button>
+    <button class="habit-btn" onclick="openHabit('cleanliness')">Cleanliness</button>
+    <button class="habit-btn" onclick="openHabit('leadership')">Leadership Skills</button>
+    <button class="habit-btn" onclick="openHabit('discipline')">Discipline</button>
+    <button class="habit-btn" onclick="openHabit('communication')">Communication</button>
+    <button class="habit-btn" onclick="openHabit('mindfulness')">Mindfulness</button>
+    <button class="habit-btn" onclick="openHabit('teamwork')">Teamwork</button>
+    <button class="habit-btn" onclick="openHabit('stress')">Stress Management</button>
+    <button class="habit-btn" onclick="openHabit('hobbies')">Healthy Hobbies</button>
+
+</div>
+
+</section>
+
+<!-- HABIT DETAILS -->
+<section class="habit-details" id="habitDetails">
+
+    <button class="back-btn" onclick="closeHabit()">⬅ Back to Wellness</button>
+
+    <h2 id="habitTitle"></h2>
+    <p id="habitContent"></p>
+
+</section>
+
+<div class="dashboard-grid" id="recommendations">
+
+        <button class="dash-card" onclick="openDashboardInfo('recommendations')">
+            <h3>✨ Recommendations</h3>
+            <p>Personalized improvement tips</p>
+        </button>
+
+    </div>
+
+    <!-- DASHBOARD DETAILS -->
+
+<section class="dashboard-details" id="dashboardDetails">
+    <button class="back-btn" onclick="closeDashboardInfo()">⬅ Back to Dashboard</button>
+    <h2 id="dashboardTitle"></h2>
+    <div class="habit-content-box" id="dashboardContent"></div>
+</section>
+
+<!-- RELAXATION & SUPPORT RESOURCES -->
+
+<section class="relax-section" id="resources">
+
+    <h2>🧘 Relaxation & Support Resources</h2>
+
+    <div class="relax-card">
+
+        <h3>Choose a Relaxation Activity</h3>
+
+        <div class="relax-container">
+
+            <button onclick="startRelaxTimer('Breathing Exercise',60)">
+                🌬 Breathing Exercise (1 min)
+            </button>
+
+            <button onclick="startRelaxTimer('Guided Meditation',300)">
+                🧠 Guided Meditation (5 min)
+            </button>
+
+            <button onclick="startRelaxTimer('Calm Music Session',600)">
+                🎵 Calm Music (10 min)
+            </button>
+
+            <button onclick="startRelaxTimer('Stress Relief Activity',180)">
+                💆 Stress Relief (3 min)
+            </button>
+
+        </div>
+
+        <div id="relaxStatus">
+            Select an activity to begin
+        </div>
+
+        <div id="relaxTimer">
+            00:00
+        </div>
+
+    </div>
+
+</section>
+
+<!-- POMODORO TIMER -->
+
+<section class="pomodoro-section" id="pomodoro">
+
+    <h2>🍅 Pomodoro Focus Timer</h2>
+
+    <div class="pomodoro-card">
+
+        <div class="pomodoro-circle">
+            <h1 id="pomodoroTimer">25:00</h1>
+        </div>
+
+        <div class="pomodoro-buttons">
+            <button onclick="startPomodoro()">Start</button>
+            <button onclick="pausePomodoro()">Pause</button>
+            <button onclick="resetPomodoro()">Reset</button>
+        </div>
+
+        <p id="pomodoroStatus">Focus Session</p>
+
+    </div>
+
+</section>
+
+<!-- NOTIFICATIONS -->
+<!-- AUTO NOTIFICATIONS -->
+
+<section class="notification-section">
+
+    <h2>Smart Wellness Alerts</h2>
+
+    <div class="notification-card">
+
+        <h3>🧠 Intelligent Break Reminder System</h3>
+
+        <p>
+        
+           Tracks total device usage duration
+           continuously across sessions and
+           monitors digital wellbeing patterns.
+
+        </p>
+
+        <div class="alert-box" id="alertBox">
+            ✅ Wellness notifications active
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CALL SAFETY -->
+<section class="speed-section" id="tracker">
+
+    <h2>🚗 Real-Time Movement Safety Tracker</h2>
+
+    <div class="speed-card">
+
+        <h3>Device Movement Monitoring</h3>
+
+        <p>
+            Detects actual device movement speed using GPS.
+            If speed exceeds 10 m/s, safety alerts are generated.
+        </p>
+
+        <button onclick="startSpeedTracking()">
+            Start Tracking
+        </button>
+
+        <button onclick="stopSpeedTracking()">
+            Stop Tracking
+        </button>
+
+        <div id="speedResult">
+
+            Waiting for tracking...
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EMERGENCY HELP & COUNSELING SUPPORT -->
+
+<section class="help-section" id="help">
+
+    <h2>🚨 Emergency Help & Counseling Support</h2>
+
+    <div class="help-card">
+
+        <h3>👨‍⚕ Counselor Contact Information</h3>
+
+        <p>
+            Student Wellness Counselor<br>
+            Phone: +91 1800-123-4567<br>
+            Email: counselor@studentwellness.com
+        </p>
+
+        <h3>📞 Student Support Helpline</h3>
+
+        <p>
+            24/7 Student Emotional Support<br>
+            Helpline: 1800-599-0019
+        </p>
+
+        <h3>🏥 Mental Health Resource</h3>
+
+        <p>
+            National Institute of Mental Health and Neurosciences (NIMHANS)<br>
+            Bangalore, India
+        </p>
+
+        <h3>✉ Email Support Form</h3>
+
+        <input type="text" id="supportName" placeholder="Your Name">
+
+        <input type="email" id="supportEmail" placeholder="Your Email">
+
+        <textarea id="supportMessage"
+        placeholder="Describe your concern"></textarea>
+
+        <button onclick="sendSupportMessage()">
+            Send Support Request
+        </button>
+
+        <div id="supportResult"></div>
+
+    </div>
+
+</section>
+
+<!-- FAQ SECTION -->
+
+<section class="faq-section" id="faq">
+
+<h2>❓ Frequently Asked Questions</h2>
+
+<div class="faq-container">
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>1. What is digital addiction?</h3>
+<p>
+Digital addiction is the excessive use of digital devices such as smartphones, gaming systems, social media, and streaming platforms.  
+It becomes a problem when it starts affecting daily life, sleep, studies, relationships, and emotional health.  
+Students may feel dependent on screens for entertainment or comfort.  
+Over time, it can reduce productivity and focus.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>2. How much screen time is healthy for students?</h3>
+<p>
+Healthy screen time depends on age and purpose of usage.  
+For students, 2–4 hours of non-academic screen time is generally considered balanced.  
+Educational usage may be higher but should include regular breaks.  
+The key is maintaining balance with exercise, sleep, and offline activities.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>3. What are the symptoms of digital addiction?</h3>
+<p>
+Common symptoms include spending too much time online and difficulty stopping usage.  
+Students may experience anxiety when separated from devices.  
+Other signs include poor concentration, sleep disturbances, and neglect of responsibilities.  
+Social withdrawal and reduced academic performance are also warning signs.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>4. How can I reduce mobile addiction?</h3>
+<p>
+Start by setting screen time limits for apps and social media.  
+Turn off unnecessary notifications that distract you frequently.  
+Replace screen time with productive activities like reading or exercise.  
+Taking regular digital detox breaks can gradually improve self-control.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>5. Can digital addiction affect academic performance?</h3>
+<p>
+Yes, excessive screen usage reduces concentration and memory retention.  
+It often causes procrastination and loss of study time.  
+Students may struggle to complete assignments efficiently.  
+Long-term distraction can lower grades and academic confidence.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>6. How does screen time affect sleep?</h3>
+<p>
+The blue light from screens suppresses melatonin production.  
+This delays sleep and affects sleep quality.  
+Late-night scrolling can overstimulate the brain.  
+Poor sleep causes fatigue, reduced concentration, and stress.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>7. What is digital detox?</h3>
+<p>
+Digital detox means taking intentional breaks from digital devices.  
+It helps the brain relax and reset from constant stimulation.  
+Students can use this time for offline hobbies and reflection.  
+Regular detox improves focus, mood, and productivity.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>8. Why is mental wellness important for students?</h3>
+<p>
+Mental wellness supports emotional balance and healthy decision-making.  
+It improves focus, memory, and academic performance.  
+Good mental health helps students handle stress effectively.  
+It also builds confidence and resilience for challenges.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>9. Can social media increase anxiety?</h3>
+<p>
+Yes, constant comparison with others can affect self-esteem.  
+Fear of missing out creates emotional pressure.  
+Too much exposure to online content can overstimulate the mind.  
+This often leads to stress, anxiety, and reduced confidence.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>10. How often should I take screen breaks?</h3>
+<p>
+Students should take a break every 30–45 minutes.  
+A 5–10 minute break helps relax the eyes and mind.  
+Stretching or walking during breaks improves circulation.  
+This keeps productivity high and reduces digital fatigue.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>11. What activities can replace phone usage?</h3>
+<p>
+Reading books, exercising, journaling, and outdoor walks are excellent alternatives.  
+Creative hobbies like drawing or music also help.  
+Spending time with family improves social connection.  
+These activities refresh the mind better than endless scrolling.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>12. What is the ideal daily routine for digital wellness?</h3>
+<p>
+A healthy routine includes study time, exercise, and proper sleep.  
+Schedule regular breaks from devices during the day.  
+Avoid screens before bedtime for better rest.  
+Balanced screen use improves both mental and physical wellness.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>13. How can parents help reduce digital addiction?</h3>
+<p>
+Parents can set healthy screen boundaries at home.  
+They should encourage outdoor and family activities.  
+Leading by example is very effective.  
+Open communication helps students build healthy digital habits.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>14. When should I seek counseling support?</h3>
+<p>
+Seek support if digital usage causes stress or emotional imbalance.  
+If studies, sleep, or relationships are affected, help is important.  
+Counselors can provide coping strategies and guidance.  
+Early support prevents bigger mental health challenges.
+</p>
+</div>
+
+<div class="faq-item" onclick="toggleFAQ(this)">
+<h3>15. Can digital wellness improve life quality?</h3>
+<p>
+Yes, balanced digital habits improve focus and productivity.  
+They support better sleep and emotional health.  
+Students become more engaged in real-world activities.  
+Overall, digital wellness creates a healthier and happier lifestyle.
+</p>
+</div>
+
+</div>
+
+</section>
+<!-- WEEKLY PROGRESS -->
+
+<section class="progress-section" id="progress">
+
+    <h2>📊 Weekly Screen Time Progress</h2>
+
+    <div class="progress-card">
+
+        <h3>Screen Time Usage</h3>
+
+        <p>Weekly digital wellness overview</p>
+        <div class="progress-content"> 
+
+        <div class="progress-chart">
+
+            <div class="bar">
+                <span>5.5h</span>
+                <div class="bar-fill" style="height: 90%;"></div>
+                <small>Mon</small>
+            </div>
+
+            <div class="bar">
+                <span>5h</span>
+                <div class="bar-fill" style="height: 82%;"></div>
+                <small>Tue</small>
+            </div>
+
+            <div class="bar">
+                <span>4.8h</span>
+                <div class="bar-fill" style="height: 78%;"></div>
+                <small>Wed</small>
+            </div>
+
+            <div class="bar">
+                <span>4.5h</span>
+                <div class="bar-fill" style="height: 73%;"></div>
+                <small>Thu</small>
+            </div>
+
+            <div class="bar">
+                <span>4.2h</span>
+                <div class="bar-fill" style="height: 68%;"></div>
+                <small>Fri</small>
+            </div>
+
+            <div class="bar">
+                <span>4h</span>
+                <div class="bar-fill" style="height: 64%;"></div>
+                <small>Sat</small>
+            </div>
+
+            <div class="bar">
+                <span>3.8h</span>
+                <div class="bar-fill" style="height: 60%;"></div>
+                <small>Sun</small>
+            </div>
+
+        </div>
+        <div class="wellness-score">
+
+    <div class="score-circle">
+        <span>78%</span>
+    </div>
+
+    <h3>Digital Wellness</h3>
+
+    <p>Healthy Usage</p>
+
+</div>
+
+    </div>
+
+</section>
+
+<!-- CONTACT & FEEDBACK -->
+
+<section class="feedback-section" id="feedback">
+
+    <h2>📩 Contact & Feedback</h2>
+
+    <div class="feedback-card">
+
+        <h3>We Value Your Feedback</h3>
+
+        <p>
+            Share your suggestions to improve the Digital Wellness Platform
+        </p>
+
+        <input type="text"
+        id="feedbackName"
+        placeholder="Enter Your Name">
+
+        <input type="email"
+        id="feedbackEmail"
+        placeholder="Enter Your Email">
+
+        <textarea
+        id="feedbackSuggestion"
+        placeholder="Enter your suggestions or feedback">
+        </textarea>
+
+        <button onclick="submitFeedback()">
+            Submit Feedback
+        </button>
+
+        <div id="feedbackResult"></div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <h2>Admin Contact</h2>
+
+    <p>Email: support@digitalwellness.com</p>
+
+    <p>Phone: +91 9876543210</p>
+
+    <!-- COPYRIGHT -->
+
+    <div class="copyright-box">
+
+        <div class="copyright-glow"></div>
+
+        <h3>
+            © 2026 Digital Addiction Awareness Platform
+        </h3>
+
+        <p>
+            Student Mental Wellness Support System
+        </p>
+
+        <p>
+            Developed by Guru Priya Kanuru
+        </p>
+
+        <p>
+            All Rights Reserved • Educational Project
+        </p>
+
+        <div class="copyright-line"></div>
+
+        <span>
+            Build healthy digital habits • Learn • Grow • Thrive
+        </span>
+
+    </div>
+
+</footer>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>
